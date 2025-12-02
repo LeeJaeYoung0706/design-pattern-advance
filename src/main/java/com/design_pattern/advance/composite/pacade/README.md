@@ -1,4 +1,4 @@
-## 상속보다는 컴포지트 패턴을 사용하라
+## 상속보다는 컴포지트 패턴을 사용하라 (1)
 
 ### 패키지 경계를 넘어 다른 패키지의 구체 클래스를 상속하는 것은 위험
 - 상위 클래스에서 제공하는 메서드 구현이 변경된다면,
@@ -8,7 +8,6 @@
 - 새로운 클래스를 만들고 private 필드로 기존 클래스의 인스턴스를 참조
 - 새 클래스의 인스턴스 메서드들은 기존클래스에 대응하는 메서드를 호출
 - 기존 클래스의 구현이 변경되거나 세로운 메서드가 생기더라도 아무런 영향을 받지 않음.
-
 
 ```java
 package com.design_pattern.advance.pacade;
@@ -41,8 +40,8 @@ public class InstrumentedHashSet<E> extends HashSet<E> {
     }
 
     public static void main(String[] args) {
-        InstrumentedHashSet<String> s = new InstrumentedHashSet<>();
-        s.addAll(List.of("test" , "test1" , "test2"));
+        com.design_pattern.advance.composite.pacade.InstrumentedHashSet<String> s = new com.design_pattern.advance.composite.pacade.InstrumentedHashSet<>();
+        s.addAll(List.of("test", "test1", "test2"));
         System.out.println(s.gatAddCount());
     }
 }
@@ -146,3 +145,5 @@ public class ForwardingSet<E> implements Set<E> {
 ```
 - 위의 예와 다르게 super.addAll()을 호출하더라도 멤버변수로 가지고 잇는 set의 addAll이 호출됨.
 따라서 사이드 이펙트를 없앨 수 있음. 캡슐화를 지킬 수 있음.
+멤버변수로 선언된 HashSet() 에 추가되어도 해당 코드는 변화하지 않아도 정상적으로 돌아갈 수 있음.
+- 또한, interface로 설계할 경우 구현체인 ForwardSet 에서 구현하지 않는다면 컴파일 오류가 발생함으로 이를 알아내 빠르고 쉽게 대응할 수 있다.

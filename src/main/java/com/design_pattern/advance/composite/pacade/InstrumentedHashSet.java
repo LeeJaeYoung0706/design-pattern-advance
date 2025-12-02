@@ -1,4 +1,4 @@
-package com.design_pattern.advance.pacade;
+package com.design_pattern.advance.composite.pacade;
 
 import java.util.Collection;
 import java.util.HashSet;
